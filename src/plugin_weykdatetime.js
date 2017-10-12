@@ -158,7 +158,7 @@ const PluginWeykDateTime = {
         m = parseInt(hms[2],10)
         s = parseInt(hms[3],10)
       } else {
-        throw Error(`時間の書式がおかしいです(時間:${tm})`)
+        throw Error(`時間の書式がおかしいです(時間:${s1})`)
       }
       // 時分秒を通算秒に変換する
       let r = ( ( h * 60 ) + m ) * 60 + s
@@ -181,7 +181,7 @@ const PluginWeykDateTime = {
     fn: function (s1, s2,  sys) {
       const dt1 = sys._weykdatetime.s2dt(s1,"日付1")
       const dt2 = sys._weykdatetime.s2dt(s2,"日付2")
-      const dif = (dt1.getTime() - dt2.getTime()) / 24 / 60 / 60 / 1000
+      const dif = (dt2.getTime() - dt1.getTime()) / 24 / 60 / 60 / 1000
       if (dif > 0) {
         return Math.floor(dif)
       } else {
